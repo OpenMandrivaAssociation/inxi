@@ -1,6 +1,6 @@
 Name:		inxi
 Version:	1.8.5
-Release:	1
+Release:	%mkrel 1
 License:	GPLv3
 Group:		System/Configuration/Other
 Summary:	A full featured system information script
