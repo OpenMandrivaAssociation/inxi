@@ -27,7 +27,7 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %{_bindir}/%{name}
-%{_mandir}/man8/%{name}.8*
+%{_mandir}/man1/%{name}.1*
 
 
 %changelog
