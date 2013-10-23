@@ -1,12 +1,12 @@
 Name:		inxi
-Version:	1.8.5
+Version:	1.9.16
 Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
 Summary:	A full featured system information script
 URL:		http://code.google.com/p/inxi/
 Source0:	inxi
-Source1:	inxi.8
+Source1:	inxi.1
 BuildArch:	noarch
 
 %description
@@ -23,7 +23,7 @@ latest inxi version number.
 
 %install
 install -m755 %{SOURCE0} -D %{buildroot}%{_bindir}/%{name}
-install -m644 %{SOURCE1} -D %{buildroot}%{_mandir}/man8/%{name}.8
+install -m644 %{SOURCE1} -D %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %{_bindir}/%{name}
