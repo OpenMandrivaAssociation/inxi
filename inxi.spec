@@ -1,6 +1,6 @@
 Name:		inxi
 Version:	1.9.18
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		System/Configuration/Other
 Summary:	A full featured system information script
@@ -28,13 +28,3 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_mandir}/man1/%{name}.1
 %files
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
-
-
-%changelog
-* Fri Jun 15 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.8.5-1
-+ Revision: 805892
-- imported package inxi
-
-
-* Fri Jun  6 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.8.5-1
-- initial release (requested by viking60)
