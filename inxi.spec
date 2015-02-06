@@ -1,6 +1,6 @@
 Name:		inxi
 Version:	1.9.18
-Release:	2
+Release:	3
 License:	GPLv3
 Group:		System/Configuration/Other
 Summary:	A full featured system information script
