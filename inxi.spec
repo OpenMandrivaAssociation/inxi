@@ -1,40 +1,78 @@
 Name:		inxi
-Version:	1.9.18
+Version:	2.2.27
 Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
-Summary:	A full featured system information script
+Summary:	Command line system information script for console and IRC
 URL:		http://code.google.com/p/inxi/
-Source0:	inxi
-Source1:	inxi.1
+# obtaining source and version from svn :
+# svn checkout http://inxi.googlecode.com/svn/trunk && cat trunk/inxi | grep "Version: "
+# or if you know the version just: wget http://inxi.googlecode.com/svn/trunk/inxi.tar.gz -O %{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
+Source1:	README.urpmi
+
+Requires:	glxinfo
+Suggests:	lm_sensors
+Suggests:	hddtemp
+Suggests:	usbutils
+Suggests:	xrandr
+Suggests:	pciutils
+Suggests:	procps
+Suggests:	coreutils
+Suggests:	gawk
+Suggests:	sed
+Suggests:	xprop
+
 BuildArch:	noarch
-
+	
 %description
-Inxi: A full featured system information script
+inxi is a command line system information script built for console and IRC.
+It is also used for forum technical support, as a debugging tool, to quickly
+ascertain user system configuration and hardware.
+inxi shows system hardware, CPU, drivers, Xorg, Desktop, kernel, GCC version,
+processes, RAM usage, and a wide variety of other useful information.
 
-Inxi offers a wide range of built-in options, as well as a good number of extra
-features which require having the script recommends installed on the system.
-Check recommends to see what's needed for each extra feature. Check sources for
-latest inxi version number.
-
-%prep
-
-%build
-
-%install
-install -m755 %{SOURCE0} -D %{buildroot}%{_bindir}/%{name}
-install -m644 %{SOURCE1} -D %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
+%doc inxi.changelog
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man?/%{name}*
+
+#---------------------------------------------------
+%package 	konversation
+Summary:	Plugin for konversation
+Group:		System/Configuration/Other
+BuildRequires:	kde4-macros
+Requires:       konversation
+Requires:       %{name} = %{EVRD}
+
+%description 	konversation
+Plugin to allow %{name} to be easily used in konversation.
 
 
-%changelog
-* Fri Jun 15 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.8.5-1
-+ Revision: 805892
-- imported package inxi
+%files konversation
+%doc inxi.changelog
+%{_kde_appsdir}/konversation/scripts/%{name}
 
+#---------------------------------------------------
+%prep
+%setup -c
+chmod -x inxi.changelog
 
-* Fri Jun  6 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.8.5-1
-- initial release (requested by viking60)
+%build
+# nothing here
+
+%install
+# binary script
+install -m755 %{name} -D %{buildroot}%{_bindir}/%{name}
+# man page
+install -m644 %{name}.1 -D %{buildroot}%{_mandir}/man1/%{name}.1
+# konversation-plugin
+mkdir -p %{buildroot}%{_kde_appsdir}/konversation/scripts
+pushd %{buildroot}%{_kde_appsdir}/konversation/scripts/
+ln -s %{_bindir}/%{name} %{name}
+popd
+
+# inxi --recommends
+install -m644 %{SOURCE1} README.urpmi
+
