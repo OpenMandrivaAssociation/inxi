@@ -22,9 +22,8 @@ Suggests:	coreutils
 Suggests:	gawk
 Suggests:	sed
 Suggests:	xprop
-
 BuildArch:	noarch
-	
+
 %description
 inxi is a command line system information script built for console and IRC.
 It is also used for forum technical support, as a debugging tool, to quickly
@@ -75,4 +74,3 @@ popd
 
 # inxi --recommends
 install -m644 %{SOURCE1} README.urpmi
-
