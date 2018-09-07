@@ -1,5 +1,2 @@
-removed_sources:
-  inxi-1.9.14.tar.gz: 2ed8ce3ad6d752d476900d203c2d3ff1cb6a4809
-  inxi-2.2.15.tar.gz: ffb84c4d190fcff3de69e20d4aad6f29db42bda0
 sources:
-  inxi-2.2.27.tar.gz: 6740bf39d64618c43e5d00a4a17dd03bce3cf722
+  inxi-3.0.22-1.tar.gz: 447af440dd20735315939d1b041e430592c64b0c
