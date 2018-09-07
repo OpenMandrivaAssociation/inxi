@@ -1,17 +1,17 @@
+%global __requires_exclude ^perl\\((the)
+%define patch_set 1
+
+Summary:	Command line system information script for console and IRC
 Name:		inxi
-Version:	2.2.27
+Version:	3.0.22
 Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
-Summary:	Command line system information script for console and IRC
-URL:		http://code.google.com/p/inxi/
-# obtaining source and version from svn :
-# svn checkout http://inxi.googlecode.com/svn/trunk && cat trunk/inxi | grep "Version: "
-# or if you know the version just: wget http://inxi.googlecode.com/svn/trunk/inxi.tar.gz -O %{name}-%{version}.tar.gz
-Source0:	%{name}-%{version}.tar.gz
-Source1:	README.urpmi
+URL:		http://smxi.org/docs/inxi.htm
+Source0:	https://github.com/smxi/inxi/archive/%{version}-%{patch_set}/%{name}-%{version}-%{patch_set}.tar.gz
 
 Requires:	glxinfo
+Requires:	perl(XML::Dumper)
 Suggests:	lm_sensors
 Suggests:	hddtemp
 Suggests:	usbutils
@@ -31,7 +31,6 @@ ascertain user system configuration and hardware.
 inxi shows system hardware, CPU, drivers, Xorg, Desktop, kernel, GCC version,
 processes, RAM usage, and a wide variety of other useful information.
 
-
 %files
 %doc inxi.changelog
 %{_bindir}/%{name}
@@ -41,36 +40,47 @@ processes, RAM usage, and a wide variety of other useful information.
 %package 	konversation
 Summary:	Plugin for konversation
 Group:		System/Configuration/Other
-BuildRequires:	kde4-macros
+BuildRequires:	pkgconfig(ECM)
 Requires:       konversation
 Requires:       %{name} = %{EVRD}
 
 %description 	konversation
 Plugin to allow %{name} to be easily used in konversation.
 
-
 %files konversation
-%doc inxi.changelog
-%{_kde_appsdir}/konversation/scripts/%{name}
+%{_kde5_datadir}/konversation/scripts/%{name}
 
 #---------------------------------------------------
+%package 	quassel
+Summary:	Plugin for quassel
+Group:		Development/KDE and Qt
+BuildRequires:	pkgconfig(ECM)
+Requires:	quassel
+Requires:	%{name} >= %{EVRD}
+
+%description 	quassel
+Plugin to allow %{name} to be easily used in quassel.
+
+%files quassel
+%{_kde5_datadir}/quassel/scripts/%{name}
+
+#---------------------------------------------------
+
 %prep
-%setup -c
-chmod -x inxi.changelog
+%autosetup -n %{name}-%{version}-%{patch_set}
 
 %build
 # nothing here
 
 %install
-# binary script
 install -m755 %{name} -D %{buildroot}%{_bindir}/%{name}
-# man page
 install -m644 %{name}.1 -D %{buildroot}%{_mandir}/man1/%{name}.1
-# konversation-plugin
-mkdir -p %{buildroot}%{_kde_appsdir}/konversation/scripts
-pushd %{buildroot}%{_kde_appsdir}/konversation/scripts/
-ln -s %{_bindir}/%{name} %{name}
-popd
 
-# inxi --recommends
-install -m644 %{SOURCE1} README.urpmi
+mkdir -p %{buildroot}%{_kde5_datadir}/konversation/scripts
+cd %{buildroot}%{_kde5_datadir}/konversation/scripts/
+ln -s %{_bindir}/%{name} %{name}
+cd -
+mkdir -p %{buildroot}%{_kde5_datadir}/quassel/scripts
+cd %{buildroot}%{_kde5_datadir}/quassel/scripts/
+ln -s %{_bindir}/%{name} %{name}
+cd -
