@@ -40,7 +40,7 @@ processes, RAM usage, and a wide variety of other useful information.
 %package 	konversation
 Summary:	Plugin for konversation
 Group:		System/Configuration/Other
-BuildRequires:	pkgconfig(ECM)
+BuildRequires:	cmake(ECM)
 Requires:       konversation
 Requires:       %{name} = %{EVRD}
 
@@ -54,7 +54,7 @@ Plugin to allow %{name} to be easily used in konversation.
 %package 	quassel
 Summary:	Plugin for quassel
 Group:		Development/KDE and Qt
-BuildRequires:	pkgconfig(ECM)
+BuildRequires:	cmake(ECM)
 Requires:	quassel
 Requires:	%{name} >= %{EVRD}
 
