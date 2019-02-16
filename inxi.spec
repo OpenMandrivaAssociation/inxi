@@ -11,7 +11,7 @@ URL:		http://smxi.org/docs/inxi.htm
 Source0:	https://github.com/smxi/inxi/archive/%{version}-%{patch_set}/%{name}-%{version}-%{patch_set}.tar.gz
 
 Requires:	glxinfo
-Requires:	perl(XML::Dumper)
+Recommends:	perl(XML::Dumper)
 Suggests:	lm_sensors
 Suggests:	hddtemp
 Suggests:	usbutils
