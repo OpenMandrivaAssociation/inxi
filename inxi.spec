@@ -3,15 +3,15 @@
 
 Summary:	Command line system information script for console and IRC
 Name:		inxi
-Version:	3.0.22
-Release:	2
+Version:	3.0.32
+Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
 URL:		http://smxi.org/docs/inxi.htm
 Source0:	https://github.com/smxi/inxi/archive/%{version}-%{patch_set}/%{name}-%{version}-%{patch_set}.tar.gz
 
 Requires:	glxinfo
-Requires:	perl(XML::Dumper)
+Recommends:	perl(XML::Dumper)
 Suggests:	lm_sensors
 Suggests:	hddtemp
 Suggests:	usbutils
