@@ -3,7 +3,7 @@
 
 Summary:	Command line system information script for console and IRC
 Name:		inxi
-Version:	3.0.35
+Version:	3.0.37
 Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
