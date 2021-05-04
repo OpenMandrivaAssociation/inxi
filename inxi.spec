@@ -22,6 +22,7 @@ Suggests:	coreutils
 Suggests:	gawk
 Suggests:	sed
 Suggests:	xprop
+Suggests:	xset
 BuildArch:	noarch
 
 %description
