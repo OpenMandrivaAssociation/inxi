@@ -4,7 +4,7 @@
 Summary:	Command line system information script for console and IRC
 Name:		inxi
 Version:	3.3.25
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		System/Configuration/Other
 URL:		http://smxi.org/docs/inxi.htm
