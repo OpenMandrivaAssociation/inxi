@@ -1,5 +1,5 @@
 %global __requires_exclude ^perl\\((the)
-%define patch_set 1
+%define patch_set 2
 
 Summary:	Command line system information script for console and IRC
 Name:		inxi
