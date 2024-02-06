@@ -1,14 +1,15 @@
 %global __requires_exclude ^perl\\((the)
-%define patch_set 2
+%define patch_set 1
 
 Summary:	Command line system information script for console and IRC
 Name:		inxi
-Version:	3.3.31
+Version:	3.3.32
 Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
-URL:		http://smxi.org/docs/inxi.htm
+URL:		https://smxi.org/docs/inxi.htm
 Source0:	https://github.com/smxi/inxi/archive/%{version}-%{patch_set}/%{name}-%{version}-%{patch_set}.tar.gz
+# Alternative source https://codeberg.org/smxi/inxi/
 
 Requires:	glxinfo
 Recommends:	perl(XML::Dumper)
