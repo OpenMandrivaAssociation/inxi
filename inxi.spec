@@ -69,7 +69,8 @@ Plugin to allow %{name} to be easily used in quassel.
 #---------------------------------------------------
 
 %prep
-%autosetup -n %{name}-%{version}-%{patch_set}
+%autosetup -p1
+#-n %{name}-%{version}-%{patch_set}
 
 %build
 # nothing here
