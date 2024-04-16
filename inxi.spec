@@ -3,13 +3,13 @@
 
 Summary:	Command line system information script for console and IRC
 Name:		inxi
-Version:	3.3.33
+Version:	3.3.34
 Release:	1
 License:	GPLv3
 Group:		System/Configuration/Other
 URL:		https://smxi.org/docs/inxi.htm
-Source0:	https://github.com/smxi/inxi/archive/%{version}-%{patch_set}/%{name}-%{version}-%{patch_set}.tar.gz
-# Alternative source https://codeberg.org/smxi/inxi/
+Source0:  https://codeberg.org/smxi/inxi/archive/%{version}-%{patch_set}/%{name}-%{version}-%{patch_set}.tar.gz
+# GH source https://github.com/smxi/ is no longer used.
 
 Requires:	glxinfo
 Recommends:	perl(XML::Dumper)
