@@ -25,6 +25,8 @@ Suggests:	sed
 Suggests:	xprop
 Suggests:	xset
 BuildArch:	noarch
+%rename inxi-konversation
+%rename inxi-quassel
 
 %description
 inxi is a command line system information script built for console and IRC.
@@ -39,34 +41,6 @@ processes, RAM usage, and a wide variety of other useful information.
 %{_mandir}/man?/%{name}*
 
 #---------------------------------------------------
-%package 	konversation
-Summary:	Plugin for konversation
-Group:		System/Configuration/Other
-BuildRequires:	cmake(ECM)
-Requires:       konversation
-Requires:       %{name} = %{EVRD}
-
-%description 	konversation
-Plugin to allow %{name} to be easily used in konversation.
-
-%files konversation
-%{_kde5_datadir}/konversation/scripts/%{name}
-
-#---------------------------------------------------
-%package 	quassel
-Summary:	Plugin for quassel
-Group:		Development/KDE and Qt
-BuildRequires:	cmake(ECM)
-Requires:	quassel
-Requires:	%{name} >= %{EVRD}
-
-%description 	quassel
-Plugin to allow %{name} to be easily used in quassel.
-
-%files quassel
-%{_kde5_datadir}/quassel/scripts/%{name}
-
-#---------------------------------------------------
 
 %prep
 %autosetup -p1 -n %{name}
@@ -78,12 +52,3 @@ Plugin to allow %{name} to be easily used in quassel.
 %install
 install -m755 %{name} -D %{buildroot}%{_bindir}/%{name}
 install -m644 %{name}.1 -D %{buildroot}%{_mandir}/man1/%{name}.1
-
-mkdir -p %{buildroot}%{_kde5_datadir}/konversation/scripts
-cd %{buildroot}%{_kde5_datadir}/konversation/scripts/
-ln -s %{_bindir}/%{name} %{name}
-cd -
-mkdir -p %{buildroot}%{_kde5_datadir}/quassel/scripts
-cd %{buildroot}%{_kde5_datadir}/quassel/scripts/
-ln -s %{_bindir}/%{name} %{name}
-cd -
